@@ -101,7 +101,7 @@ def child_create():
         child = Child(FirstName=form.firstname.data, LastName=form.lastname.data, Password= randomString(8), Age= form.age.data, Grade = form.grade.data, Degree= form.degree.data.upper(), Disability_Type = form.disability_type.data, ClassRoom= form.class_room.data.upper())
         db.session.add(child)
         db.session.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('child_list'))
     return render_template('child_create.html', form=form)
 
 
@@ -151,7 +151,7 @@ def child_confirm_delete(child_id):
      #   if current_user.role == "Admin":
       #      return redirect(url_for('reservation_list'))
        # else:
-    return redirect(url_for('home'))
+    return redirect(url_for('child_list'))
     """
     else:
         flash('You need to be admin to view this page.','danger')
@@ -178,7 +178,7 @@ def child_update(child_id):
           #  if current_user.role == 'Admin':
           #      return redirect(url_for('reservation_list'))
           #  else:
-        return redirect(url_for('home'))
+        return redirect(url_for('child_list'))
     elif request.method == 'GET':
         form.firstname.data = child.FirstName
         form.lastname.data = child.LastName

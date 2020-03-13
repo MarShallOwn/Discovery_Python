@@ -11,18 +11,14 @@
 }
 </style>
 
-<article style="padding: 5px 0px; height: 550px; margin:12px; width:100%; display:inline-block" class="col-md-7 media content-section">    
+<article style="padding: 5px 0px; height: 100%; margin:12px; width:100%; display:inline-block" class="col-md-7 media content-section">    
 <div style='margin-left:5px;' class="media-body">
     <div class="article-metadata">
-    <h2 style='color:deepskyblue'>{{ child.FirstName }}</h2> 
+    <h2 style='color:deepskyblue'>{{ child.FirstName }} {{child.LastName}}</h2> 
     </div>
     <div class="row">
             <div class="col-md-6">
                 <p></p>
-                <div class='form-group row col-md-12'>
-                    <label style="font-weight: 800; margin: 0 7px;">LastName:</label>
-                    <p class="article-content">{{ child.LastName }}</p>
-                </div>
                 
                 <div class='form-group row col-md-12'>
                     <label style="font-weight: 800; margin: 0 7px;">Age:</label>

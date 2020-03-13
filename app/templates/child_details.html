@@ -28,7 +28,7 @@
 
 
 <h1>Child {{title}}</h1>
-          <article style="padding: 5px 0px; height: 90%; margin:12px; width:100%; display:inline-block" class="col-md-7 media content-section">
+          <article style="padding: 5px 5px; height: 90%; margin:12px; width:100%; display:inline-block" class="col-md-7 media content-section">
             <div style='margin-left:5px;' class="media-body">
               <div class="article-metadata">
                 <h2 style='color:deepskyblue'>{{ child.FirstName }} {{child.LastName}}</h2> 
@@ -70,5 +70,14 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+                <div style="margin-top: 10px;" class='col-md-6'>
+                    <a href="{{ url_for('child_update', child_id = child.id) }}"> <input class="col-md-12 btn btn-primary" type="submit" value="Update"> </a>
+            </div>
+            <div style="margin-top: 10px;" class='col-md-6'>
+                <a href="{{ url_for('child_list') }}"> <input class="col-md-12 btn btn-danger" type="submit" value="Back to List"> </a>
+        </div>
+            </div>
+            
           </article>
 {% endblock content %}

@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class='row'>
+<table class="table col-md-12">
+  <tr>
+
+      <th>
+          FirstName
+      </th>
+      <th>
+          LastName
+      </th>
+      <th>
+          Age
+      </th>
+      <th>
+          Grade
+      </th>
+      <th>
+        Disability Type
+    </th>
+    <th>
+        ClassRoom
+    </th>
+      <th></th>
+  </tr>
+
+{% for child in children %}
+  <tr>
+      <td>
+          <p>{{child.FirstName}}</p>
+      </td>
+      <td>
+          <p>{{child.LastName}}</p>
+      </td>
+      <td>
+          <p>{{child.Age}}</p>
+      </td> 
+      <td>
+            <p>{{child.Grade}}</p>
+        </td>
+        <td>
+            <p>{{child.Disability_Type}}</p>
+        </td> 
+        <td>
+            <p>{{child.ClassRoom}}</p>
+        </td> 
+      <td>
+        <a href="{{ url_for('child_show', child_id=child.id) }}">Details</a> |
+        <a href="{{ url_for('child_update', child_id=child.id) }}">Edit</a> |
+        <a href="{{ url_for('child_delete', child_id=child.id) }}">Delete</a>
+      </td>
+  </tr>
+
+  
+{% endfor %}
+
+</table>
+
+</div>
+{% endblock content %}

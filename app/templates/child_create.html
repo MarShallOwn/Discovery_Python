@@ -1,0 +1,138 @@
+{%extends "layout.html" %}
+{% block content %}
+<div class='row'>
+<div class="col-md-3">
+</div>
+<div class="content-section col-md-6">
+    <form  method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Create Child</legend>
+
+            <div class="form-group">
+                    {{ form.firstname.label(class="form-control-label") }}
+
+                    {% if form.firstname.errors %}
+                        {{ form.firstname(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.firstname.errors %}
+                                <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.firstname(class="form-control form-control-lg") }}
+                    {% endif %}
+            </div>
+
+            <div class="form-group">
+                    {{ form.lastname.label(class="form-control-label") }}
+                    
+                    {% if form.lastname.errors %}
+                        {{ form.lastname(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.lastname.errors %}
+                                <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.lastname(class="form-control form-control-lg") }}
+                    {% endif %}
+            </div>
+
+            <div class="form-group">
+                    {{ form.age.label(class="form-control-label") }}
+                    
+                    {% if form.age.errors %}
+                        {{ form.age(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.age.errors %}
+                                <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.age(class="form-control form-control-lg") }}
+                    {% endif %}
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    {{form.grade.label(class="form-label")}}
+                    
+                    {% if form.grade.errors %}
+
+                {{form.grade(class="form-control is-invalid")}}
+                <div class="invalid-feedback">
+                        {% for error in form.grade.errors %}
+                        <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+
+                {% else %}
+                {{ form.grade(class="form-control") }}
+                {% endif %}
+                </div>
+
+                <div class="form-group col-md-6">
+                    {{form.degree.label(class="form-label")}}
+                    
+                    {% if form.degree.errors %}
+
+                {{form.degree(class="form-control is-invalid")}}
+                <div class="invalid-feedback">
+                        {% for error in form.degree.errors %}
+                        <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+
+                {% else %}
+                {{ form.degree(class="form-control") }}
+                {% endif %}
+                </div>
+            </div>
+
+                <div class="row">
+                    
+                    <div class="form-group col-md-6">
+                        {{form.disability_type.label(class="form-label")}}
+                        
+                        {% if form.disability_type.errors %}
+    
+                    {{form.disability_type(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                            {% for error in form.disability_type.errors %}
+                            <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+    
+                    {% else %}
+                    {{ form.disability_type(class="form-control") }}
+                    {% endif %}
+                    </div>
+
+                    
+                    <div class="form-group col-md-6">
+                        {{form.class_room.label(class="form-label")}}
+                        
+                        {% if form.class_room.errors %}
+    
+                    {{form.class_room(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                            {% for error in form.class_room.errors %}
+                            <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+    
+                    {% else %}
+                    {{ form.class_room(class="form-control") }}
+                    {% endif %}
+                    </div>
+
+                </div>
+        </fieldset>
+        <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+</div>
+{% endblock content %}

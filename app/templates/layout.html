@@ -3,33 +3,16 @@
 
 <head>
 	<!-- Required meta tags -->
+
+<link href="https://fonts.googleapis.com/css?family=Courgette|Dancing+Script|Gloria+Hallelujah|Gochi+Hand|Indie+Flower|Pacifico&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">     
+ <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-	<title>Booking Form HTML Template</title>
-
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-
-	
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
-	<!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href=" {{url_for('static', filename='main.css')}} " />
-    
-    
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <style>
             @media screen and (max-width: 764px){
@@ -44,14 +27,11 @@
 
 
 </head>
-
-
-
 <body>
         <header class="site-header">
-                <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+                <nav style="background-color:darkslategrey;" class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
                     <div class="container">
-                    <a class="navbar-brand mr-4" href="{{url_for('home')}}">MarShallResort</a>
+                    <a class="navbar-brand mr-4" href="{{url_for('home')}}">Discovery Nursery</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -59,7 +39,7 @@
                         <div class="navbar-nav mr-auto">
                         <a class="nav-item nav-link" href="{{url_for('home')}}">Home</a>
                         {% if current_user.is_authenticated and current_user.role == 'Admin' %}
-                        <a class="nav-item nav-link" href="{{url_for('reservation_list')}}">Reservation List</a>
+                        <a class="nav-item nav-link" href="{{url_for('reservation_list')}}">Child</a>
                         {% endif %}
                         </div>
                         <!-- Navbar Right Side -->
@@ -91,14 +71,14 @@
                     {% endwith %}
                 </div>
 
-                        {% block home %}{% endblock %}
-
+                        {% block content %}{% endblock %}
+<!--
                         <main role="main" class="container">
                                 <div class="row">
                                     <div class="col-md-12">
-                                    {% block content %}{% endblock %}
+                                    {% block home %}{% endblock %}
                                     </div>
-
+                                -->
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -107,4 +87,3 @@
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
-

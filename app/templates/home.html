@@ -1,10 +1,141 @@
 {%extends "layout.html" %}
-{% block home %}
+{% block content %}
 <head>
-        <link type='text/css' href="{{url_for('static', filename='creative.css')}}" rel="stylesheet">
+        <link type='text/css' href="{{url_for('static', filename='design.css')}}" rel="stylesheet">
 
 </head>
   
+
+ 
+<body>
+    <div class="main-container d-flex container-fluid">
+        <div class="w-100 row align-items-center row justify-content-center">
+            <p>
+                <span class="title">Discovery Nursery</span>
+                <br>
+                <span class="dynamics">Discover Their <span id="test"></span></span>
+            </p>
+        </div>
+</div>
+      
+   <div class ="mission">
+       <h1>our mission</h1>
+       <p>
+   Our Mission at the Discovery nursery is to develop the “Whole Child”, where the children gain confidence through the acquisition of basic skills. We establish in children love for learning, strong work ethics, creativity, respect .
+   </p>
+      <br> 
+     <video loop="loop" autoplay="autoplay" muted="muted">
+        <source src="{{ url_for('static', filename='video/good.mp4') }}">
+        </video>
+
+   </div>
+      
+      
+      
+      
+
+<div class="building-background container-fluid">
+        <div>
+            <br>
+    <p class="answer">Why do you choose us ?!</p>
+    </div>
+
+    
+    <div class="container" >
+        
+        <div class="mt-5 row">  
+            <div class="building d-flex align-items-center h-100 col-md-6">
+                <p>
+ Education at Discovery nursery is like a beautiful dance where teachers, parents, and students collaborate in a loving and nurturing, academically rich environment. Each student’s unique strengths, weaknesses and gifts are embraced and supported as we celebrate new milestones, both big and small, together.
+    </p>
+            </div>
+        
+            <div class="d-flex align-items-center col-md-6">
+            <img style="z-index: 1; width: 100vw;height: 50vh;" class="img-fluid" src="{{ url_for('static', filename='img/ga.jpg') }}">
+            </div>
+        </div>
+        
+        <div class="mt-5 row">
+            
+            <div class="d-flex align-items-center col-md-6">
+                <img style="z-index: 1; width: 100vw;height: 50vh;" class="img-fluid" src="{{url_for('static', filename='img/22.jpg') }}">
+            </div>
+            
+        <div class="building d-flex align-items-center h-100 col-md-6">
+            <p>
+   With proper care and education, every child can reach his or her full potential.
+The more parents understand about how a child grows, the better prepared they’ll be to recognize special needs – and seek help promptly.
+Children with special needs require extra attention, teaching, care and love!
+    </p> 
+            </div>
+        
+        </div>
+        
+        
+        
+        <div  class="mt-5 row">  
+            <div class="building d-flex align-items-center h-100 col-md-6">
+                <p>
+Teachers work to promote and manage the growth of their students in conjunction with their special needs.
+Our Teachers will modify the general education curriculum to make sure each student’s special individual needs are met.
+They patient, accepting, understanding and they know how to discovery each child's talent.
+    </p>
+            </div>
+        
+            <div class="d-flex align-items-center col-md-6">
+            <img style="z-index: 1; width: 100vw;height: 50vh;" class="img-fluid" src="{{ url_for('static', filename='img/kk.jpg') }}">
+            </div>
+        </div>
+        
+        
+    </div>
+          </div>
+
+
+<div class="activities container-fluid p-3 text-white ">
+    <div class="row justify-content-center">
+      <h1>our activities</h1>
+    <br>
+    
+    </div>
+    <div class="row">
+     <div class="col-md-3">
+          <img class="rounded-circle img-fluid"  src="{{ url_for('static', filename='img/drawing.jpg') }}">
+      </div>
+    <div class="col-md-3">
+     <img class="rounded-circle img-fluid"  src="{{ url_for('static', filename='img/singing.jpg') }}">
+    </div>
+     <div class="col-md-3">
+     <img class="rounded-circle img-fluid"  src="{{ url_for('static', filename='img/cooking.jpg') }}">
+    </div>
+     <div class="col-md-3">
+     <img class="rounded-circle img-fluid"  src="{{ url_for('static', filename='img/ballet.jpg') }}">
+    </div>
+      </div>
+    </div>
+  
+      
+      <script>
+        var v = document.getElementById("test");
+            
+            var k = ["Talent","Dream","Passion", "Creativity"];
+            var i=0;
+            v.innerHTML = k[0];
+                setInterval(function(){
+                    v.className = v.className === "show" ? "hide" : "show";
+                    
+                    if(v.className === "show"){
+                        i++;
+                        v.innerHTML = k[i%k.length];
+                    }
+                },2000);
+            
+            
+        </script>
+      
+
+  </body>
+
   <!-- Footer -->
   <footer  class="bg-dark py-5">
     <div class="container">

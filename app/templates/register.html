@@ -1,13 +1,13 @@
 {%extends "layout.html" %}
 {%block content %}
-    <div class="content-section">
+    <div class="container">      
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Join Today</legend>
 
                 <div class="form-group">
-                    {{ form.firstname.label(class="form-control-label") }}
+                    {{ form.firstname.label(class="col-md-2 form-control-label") }}
 
                     {% if form.firstname.errors %}
                     {{ form.firstname(class="form-control form-control-lg is-invalid") }}
@@ -17,7 +17,9 @@
                         {% endfor %}
                     </div>
                     {% else %}
+                    <div class="col-md-10">
                     {{ form.firstname(class="form-control form-control-lg") }}
+                    </div>
                     {% endif %}
 
                 </div>
@@ -33,7 +35,9 @@
                             {% endfor %}
                         </div>
                         {% else %}
-                        {{ form.lastname(class="form-control form-control-lg") }}
+                        <div class="col-md-10">
+                            {{ form.lastname(class="form-control form-control-lg") }}
+                            </div>
                         {% endif %}
                 </div>
 
@@ -48,7 +52,9 @@
                             {% endfor %}
                         </div>
                         {% else %}
-                        {{ form.email(class="form-control form-control-lg") }}
+                        <div class="col-md-10">
+                            {{ form.email(class="form-control form-control-lg") }}
+                            </div>
                         {% endif %}
                 </div>
 
@@ -63,7 +69,9 @@
                         {% endfor %}
                         </div>
                         {% else %}
-                        {{ form.password(class="form-control form-control-lg") }}
+                        <div class="col-md-10">
+                            {{ form.password(class="form-control form-control-lg") }}
+                            </div>
                         {% endif %}
                 </div>
 
@@ -79,7 +87,9 @@
                     {% endfor %}
                     </div>
                     {% else %}
-                    {{ form.confirm_password(class="form-control form-control-lg") }}
+                    <div class="col-md-10">
+                        {{ form.confirm_password(class="form-control form-control-lg") }}
+                        </div>
                     {% endif %}
             </div>
 
@@ -95,7 +105,9 @@
                 {% endfor %}
                 </div>
                 {% else %}
-                {{ form.street(class="form-control form-control-lg") }}
+                <div class="col-md-10">
+                    {{ form.street(class="form-control form-control-lg") }}
+                    </div>
                 {% endif %}
         </div>
 
@@ -111,7 +123,9 @@
             {% endfor %}
             </div>
             {% else %}
-            {{ form.city(class="form-control form-control-lg") }}
+            <div class="col-md-10">
+                {{ form.city(class="form-control form-control-lg") }}
+                </div>
             {% endif %}
     </div>
 
@@ -127,5 +141,6 @@
             Already Have an Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
         </small>
 
+    </div>
     </div>
 {% endblock content %}

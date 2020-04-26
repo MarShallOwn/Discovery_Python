@@ -1,6 +1,6 @@
 {%extends "layout.html" %}
 {% block content %}
-<div class='row'>
+<div class='row mt-5'>
 <div class="col-md-3">
 </div>
 <div class="content-section col-md-6">
@@ -132,11 +132,11 @@
 
         <div class="row">
             <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+                <a class="btn btn-outline-danger" href="{{ url_for('child_list') }}">Back to List</a> 
         </div>
 
             <div style="text-align: right;" class='col-md-10'>
-                <a class="btn btn-outline-danger" href="{{ url_for('child_list') }}">Back to List</a>
+                {{ form.submit(class="btn btn-outline-info") }}
         </div>
         </div>
 

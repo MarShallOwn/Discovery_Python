@@ -1,0 +1,133 @@
+<h4>Child Report</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="col-md-7">
+            <h3 class="text-center">Parent Info</h3>
+        </div>
+        <dl class="col-md-12 dl-horizontal">
+            <dt>
+                FirstName
+            </dt>
+
+            <dd>
+                {{user.FirstName}}
+            </dd>
+
+            <dt>
+                LastName
+            </dt>
+
+            <dd>
+                {{user.LastName}}
+            </dd>
+
+            <dt>
+                Email
+            </dt>
+
+            <dd>
+                {{user.Email}}
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+
+        <div class="col-md-7">
+            <h3 class="text-center">Child Info</h3>
+        </div>
+
+        <dl class="col-md-12 dl-horizontal">
+            <dt>
+                FirstName
+            </dt>
+
+            <dd>
+                {{child.FirstName}}
+            </dd>
+
+            <dt>
+                LastName
+            </dt>
+
+            <dd>
+                {{child.LastName}}
+            </dd>
+
+            <dt>
+                Age
+            </dt>
+
+            <dd>
+                {{child.Age}}
+            </dd>
+
+            <dt>
+                Grade
+            </dt>
+
+            <dd>
+                {{child.Grade}}
+            </dd>
+
+            <dt>
+                Degree
+            </dt>
+
+            <dd>
+                {{child.Degree}}
+            </dd>
+
+            <dt>
+                Disability Type
+            </dt>
+
+            <dd>
+                {{child.Disability_Type}}
+            </dd>
+
+            <dt>
+                ClassRoom
+            </dt>
+
+            <dd>
+                {{child.ClassRoom}}
+            </dd>
+
+        </dl>
+    </div>
+</div>
+
+    <form action="{{url_for('child_report')}}" method="POST" >
+
+        {{ form.hidden_tag() }}
+        <input type="hidden" name="Id" value="{{child.id}}">
+        <div class="form-horizontal">
+            <div class="form-group">
+                {{form.child_week_report.label(class="control-label col-md-2")}}
+                <div class="col-md-10">
+                    {% if form.child_week_report.errors %}
+                    {{ form.child_week_report(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.child_week_report.errors %}
+                            <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.child_week_report(class="form-control form-control-lg") }}
+                {% endif %}
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    {{form.submit(class="btn btn-default")}}
+                </div>
+            </div>
+        </div>
+    </form>
+
+<div>
+    <a href="{{url_for('child_list')}}" >Back to List</a>
+</div>

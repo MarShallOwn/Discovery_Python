@@ -7,7 +7,7 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 class User(db.Model, UserMixin):
-    id = db.Column(db.Integer,primary_key=True)
+    id = db.Column(db.String(50),primary_key=True)
     FirstName = db.Column(db.String(25), nullable=False)
     LastName = db.Column(db.String(25), nullable=False)
     Email = db.Column(db.String(120), unique=True, nullable=False)
@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
 
 
 class Child(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
+    id = db.Column(db.String(50),primary_key=True)
     FirstName = db.Column(db.String(25), nullable=False)
     LastName = db.Column(db.String(25), nullable=False)
     Password = db.Column(db.String(20),nullable=False)
@@ -30,12 +30,12 @@ class Child(db.Model):
     Degree = db.Column(db.String(10))
     Disability_Type = db.Column(db.String(50), nullable=False)
     ClassRoom = db.Column(db.String(10), nullable = False)
-    teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
+    teacher_id = db.Column(db.String(50), db.ForeignKey('teacher.id'))
     parent = db.relationship('Parent', backref='Child', uselist=False)
 
 
 class Teacher(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
+    id = db.Column(db.String(50),primary_key=True)
     FirstName = db.Column(db.String(25), nullable=False)
     LastName = db.Column(db.String(25), nullable=False)
     PhoneNumber = db.Column(db.String(30))
@@ -45,14 +45,14 @@ class Teacher(db.Model):
 
 
 class Parent(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(50), primary_key=True)
     child_id = db.Column(db.Integer, db.ForeignKey('child.id'))
     Child_Weekly_Report = db.Column(db.Text)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.String(50), db.ForeignKey('user.id'))
 
 
 class Employee(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(50), primary_key=True)
     FirstName = db.Column(db.String(25), nullable=False)
     LastName = db.Column(db.String(25), nullable=False)
     Age = db.Column(db.Integer, nullable=False)

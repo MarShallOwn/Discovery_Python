@@ -8,7 +8,8 @@ from app import app, db, bcrypt
 from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, ChildForm, TeacherForm, ParentForm, EmployeeForm
 from app.models import User, Employee, Teacher, Parent, Child
 from flask_login import login_user, current_user, logout_user, login_required
-
+from uuid import uuid4;
+import json
 
 def randomString(stringLength):
     """Generate a random string with the combination of lowercase and uppercase letters """
@@ -30,7 +31,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(FirstName=form.firstname.data,LastName= form.lastname.data, Email=form.email.data, Password=hashed_password, Street=form.street.data, City=form.city.data, )
+        user = User(id=str(uuid4()), FirstName=form.firstname.data, LastName= form.lastname.data, Email=form.email.data, Password=hashed_password, Street=form.street.data, City=form.city.data, )
         db.session.add(user)
         db.session.commit()
         flash(f'Your account has been created! You are now able to log in!', 'success')
@@ -92,14 +93,31 @@ def account():
         form.city.data = current_user.City
     return render_template('account.html',title='account', form=form)
 
+@app.route('/information', methods=['POST'])
+def info_for_parent():
+    data = request.get_json()
+    child = Child.query.filter_by(Password=data['Password']).first()
+    weekly_report = ""
+    if(child != None):
+        parent = Parent.query.filter_by(child_id=child.id).first()
+        weekly_report = parent.Child_Weekly_Report
+        if(parent.user_id == None):
+            parent.user_id = current_user.id
+            db.session.commit()
+    teacher = None
+    return render_template("information_to_parent.html", child=child, teacher=teacher, weekly_report=weekly_report)
+
 
 @app.route('/child/create', methods=['GET','POST'])
 @login_required
 def child_create():
     form = ChildForm()
     if form.validate_on_submit():
-        child = Child(FirstName=form.firstname.data, LastName=form.lastname.data, Password= randomString(8), Age= form.age.data, Grade = form.grade.data, Degree= form.degree.data.upper(), Disability_Type = form.disability_type.data, ClassRoom= form.class_room.data.upper())
+        child = Child(id=str(uuid4()), FirstName=form.firstname.data, LastName=form.lastname.data, Password= randomString(8), Age= form.age.data, Grade = form.grade.data, Degree= form.degree.data.upper(), Disability_Type = form.disability_type.data, ClassRoom= form.class_room.data.upper())
+        print(child.id)
+        parent = Parent(id=str(uuid4()), child_id=child.id)
         db.session.add(child)
+        db.session.add(parent)
         db.session.commit()
         return redirect(url_for('child_list'))
     return render_template('child_create.html', form=form)
@@ -117,7 +135,37 @@ def child_list():
         return redirect(url_for('home'))
         """
 
-@app.route('/child/<int:child_id>/show')
+@app.route('/child/list/search')
+def doSearch():
+    print(request.args.get('Search'))
+    option = request.args.get('Option')
+    if(option == 'option2'):
+        children = Child.query.filter(Child.LastName.contains(request.args.get('Search'))).all()
+    elif(option == 'option3'):
+        children = Child.query.filter(Child.Disability_Type.contains(request.args.get('Search'))).all()
+    else:
+        children = Child.query.filter(Child.FirstName.contains(request.args.get('Search'))).all()
+    
+    return render_template('child_list_search_ajax.html', children=children)
+
+
+@app.route('/childreport', methods=['GET','POST'])
+def child_report():
+    form = ParentForm()
+    if form.validate_on_submit():
+        child = Child.query.get_or_404(request.form['Id'])
+        parent = Parent.query.filter_by(child_id=child.id).first()
+        parent.Child_Weekly_Report = form.child_week_report.data
+        db.session.commit()
+        return redirect(url_for('child_list'))
+    elif request.method == 'GET':
+        child = Child.query.get_or_404(request.args.get('Id'))
+        user_id = Parent.query.filter_by(child_id=child.id).first().user_id
+        user = User.query.get(user_id) if user_id != None else None
+    return render_template('child_report.html', user=user, child=child, form=form)
+
+
+@app.route('/child/<child_id>/show')
 @login_required
 def child_show(child_id):
     child = Child.query.get_or_404(child_id)
@@ -129,7 +177,7 @@ def child_show(child_id):
         return redirect(url_for('home'))
 """
 
-@app.route('/child/<int:child_id>/delete')
+@app.route('/child/<child_id>/delete')
 @login_required
 def child_delete(child_id):
     child = Child.query.get_or_404(child_id)
@@ -141,11 +189,13 @@ def child_delete(child_id):
         return redirect(url_for('home'))
 """
 
-@app.route('/child/<int:child_id>/confirm_delete', methods=['POST'])
+@app.route('/child/<child_id>/confirm_delete', methods=['POST'])
 def child_confirm_delete(child_id):
     child = Child.query.get_or_404(child_id)
+    parent = Parent.query.filter_by(child_id=child.id)
   #  if current_user.role == 'Admin' or current_user == guest.user:
     db.session.delete(child)
+    db.session.delete(parent)
     db.session.commit()
     flash('Child has been deleted!', 'success')
      #   if current_user.role == "Admin":
@@ -158,7 +208,7 @@ def child_confirm_delete(child_id):
         return redirect(url_for('home'))
     """
 
-@app.route('/child/<int:child_id>/update', methods=['GET', 'POST'])
+@app.route('/child/<child_id>/update', methods=['GET', 'POST'])
 @login_required
 def child_update(child_id):
     guest = Child.query.get_or_404(child_id)

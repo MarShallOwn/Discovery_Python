@@ -1,0 +1,27 @@
+{% for child in children %}
+<tr id="bro" class="removable">
+    <td>
+        <p>{{child.FirstName}}</p>
+    </td>
+    <td>
+        <p>{{child.LastName}}</p>
+    </td>
+    <td>
+        <p>{{child.Age}}</p>
+    </td> 
+    <td>
+          <p>{{child.Grade}}</p>
+      </td>
+      <td>
+          <p>{{child.Disability_Type}}</p>
+      </td> 
+      <td>
+          <p>{{child.ClassRoom}}</p>
+      </td> 
+    <td>
+      <a href="{{ url_for('child_show', child_id=child.id) }}">Details</a> |
+      <a href="{{ url_for('child_update', child_id=child.id) }}">Edit</a> |
+      <a href="{{ url_for('child_delete', child_id=child.id) }}">Delete</a>
+    </td>
+</tr>
+{% endfor %}

@@ -1,10 +1,30 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<div class="container">
+<div id="Holder" class="container">
     <h2>Create</h2>
-    <p><a style="font-weight: 900; color: hotpink; text-decoration: none;" href="{{url_for('child_create')}}">Add Child</a></p>  
-    <input class="float-right mr-5 mb-2" id="search" type="text"> 
+    <p><a style="font-weight: 900; color: hotpink; text-decoration: none;" href="{{url_for('child_create')}}">Add Child</a></p> 
+    <div class="col-md-10">
+    
+        <div style="width: 50vw;" class="pull-right">
+            <div id="radioParent" class="col-md-6 btn-group btn-group-toggle" data-toggle="buttons">
+                <label name="radios" class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> FirstName
+                </label>
+                <label name="radios" class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> LastName
+                </label>
+                <label name="radios" class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> Disability Type
+                </label>
+            </div>
+            <div class="col">
+                <input class="float-right mr-5 mb-2" id="search" type="text">
+            </div>
+            
+        </div>
+    </div> 
+     
     <table class="table table-striped">
       <thead>
         <tr>
@@ -31,7 +51,7 @@
       </thead>
       <tbody id="tbody">
         {% for child in children %}
-        <tr>
+        <tr id="{{child.id}}" class="removable">
             <td>
                 <p>{{child.FirstName}}</p>
             </td>
@@ -62,67 +82,39 @@
   </div>
 
 
-<!--
-<div class='row'>
-    <p>
-        <a href="{{url_for('child_create')}}">Create</a>
-    </p>
-<table class="table col-md-12">
-  <tr>
+  <script type="text/javascript">
 
-      <th>
-          FirstName
-      </th>
-      <th>
-          LastName
-      </th>
-      <th>
-          Age
-      </th>
-      <th>
-          Grade
-      </th>
-      <th>
-        Disability Type
-    </th>
-    <th>
-        ClassRoom
-    </th>
-      <th></th>
-  </tr>
+        $('.removable').click( e =>{
+              
+           var id = e.currentTarget.id;
 
-{% for child in children %}
-  <tr>
-      <td>
-          <p>{{child.FirstName}}</p>
-      </td>
-      <td>
-          <p>{{child.LastName}}</p>
-      </td>
-      <td>
-          <p>{{child.Age}}</p>
-      </td> 
-      <td>
-            <p>{{child.Grade}}</p>
-        </td>
-        <td>
-            <p>{{child.Disability_Type}}</p>
-        </td> 
-        <td>
-            <p>{{child.ClassRoom}}</p>
-        </td> 
-      <td>
-        <a href="{{ url_for('child_show', child_id=child.id) }}">Details</a> |
-        <a href="{{ url_for('child_update', child_id=child.id) }}">Edit</a> |
-        <a href="{{ url_for('child_delete', child_id=child.id) }}">Delete</a>
-      </td>
-  </tr>
+            $.ajax({
+                type: "GET",
+                url: '{{url_for("child_report")}}',
+                data: { Id: id },
+                dataType: "html",
+                cache: false,
+            }).done( result => {
+                $("#Holder").html(result);
+            });
+        })
+        
+        $('#search').on('input', e =>{
 
-  
-{% endfor %}
+            var search = $("#search").val();
 
-</table>
+            var option = $("input[name='options']:checked").attr('id');
 
-</div>
--->
+            $.ajax({
+                type: "GET",
+                url: '{{url_for("doSearch")}}',
+                data: { Search: search, Option: option },
+                dataType: "html",
+            }).done( data => {
+                $('#tbody').html(data);
+            });
+
+        });
+
+</script>
 {% endblock content %}

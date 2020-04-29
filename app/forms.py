@@ -72,7 +72,7 @@ class UpdateAccountForm(FlaskForm):
 
 class ParentForm(FlaskForm):
 
-    child_week_report = TextAreaField('Password')
+    child_week_report = TextAreaField('Child Weekly Report')
     
     submit = SubmitField('Submit')
 

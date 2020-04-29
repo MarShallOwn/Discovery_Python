@@ -96,5 +96,36 @@
                     {{ form.submit(class="btn btn-outline-info") }}
             </div>
         </form>
-  </div> 
+
+        <hr>
+
+        <div id="Holder" class="text-center">
+            <div>
+                <p>Child's Password</p>
+                <input id="Password" type="text">
+            </div>
+                <div class="mt-2 mb-3">
+                    <input id="mybtn" type="submit" value="Submit" class="btn btn-default" />
+                </div>
+        </div>
+
+
+  </div>
+
+  <script>
+      $("#mybtn").click( () => {
+
+var password = $("#Password").val();
+
+$.ajax({
+    type: "POST",
+    url: '{{url_for("info_for_parent")}}',
+    contentType: 'application/json',
+    data: JSON.stringify({Password:password}),
+    dataType: "html"
+    }).done( result => {
+        $('#Holder').html(result);
+    })
+})
+  </script>
 {% endblock content %}

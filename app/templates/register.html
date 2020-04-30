@@ -10,7 +10,9 @@
                     {{ form.firstname.label(class="col-md-2 form-control-label") }}
 
                     {% if form.firstname.errors %}
-                    {{ form.firstname(class="form-control form-control-lg is-invalid") }}
+                    <div class="col-md-10">
+                        {{ form.firstname(class="form-control form-control-lg is-invalid") }}
+                    </div>
                     <div class="invalid-feedback">
                         {% for error in form.firstname.errors %}
                         <span>{{error}}</span>
@@ -28,7 +30,9 @@
                         {{ form.lastname.label(class="form-control-label") }}
 
                         {% if form.lastname.errors %}
-                        {{ form.lastname(class="form-control form-control-lg is-invalid") }}
+                        <div class="col-md-10">
+                            {{ form.lastname(class="form-control form-control-lg is-invalid") }}
+                        </div>
                         <div class="invalid-feedback">
                             {% for error in form.lastname.errors %}
                             <span>{{error}}</span>
@@ -45,7 +49,9 @@
                         {{ form.email.label(class="form-control-label") }}
                         
                         {% if form.email.errors %}
-                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="col-md-10">
+                            {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        </div>
                     <div class="invalid-feedback">
                             {% for error in form.email.errors %}
                             <span>{{error}}</span>
@@ -62,7 +68,9 @@
                         {{ form.password.label(class="form-control-label") }}
                         
                         {% if form.password.errors %}
-                    {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="col-md-10">
+                            {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        </div>
                     <div class="invalid-feedback">
                         {% for error in form.password.errors %}
                         <span>{{error}}</span>
@@ -80,7 +88,9 @@
                     {{ form.confirm_password.label(class="form-control-label") }}
                     
                     {% if form.confirm_password.errors %}
+                    <div class="col-md-10">
                 {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+            </div>
                 <div class="invalid-feedback">
                     {% for error in form.confirm_password.errors %}
                     <span>{{error}}</span>
@@ -98,7 +108,9 @@
                 {{ form.street.label(class="form-control-label") }}
                 
                 {% if form.street.errors %}
-            {{ form.street(class="form-control form-control-lg is-invalid") }}
+                <div class="col-md-10">
+                    {{ form.street(class="form-control form-control-lg is-invalid") }}
+                </div>
             <div class="invalid-feedback">
                 {% for error in form.street.errors %}
                 <span>{{error}}</span>
@@ -116,7 +128,9 @@
             {{ form.city.label(class="form-control-label") }}
             
             {% if form.city.errors %}
-        {{ form.city(class="form-control form-control-lg is-invalid") }}
+            <div class="col-md-10">
+                {{ form.city(class="form-control form-control-lg is-invalid") }}
+            </div>
         <div class="invalid-feedback">
             {% for error in form.city.errors %}
             <span>{{error}}</span>

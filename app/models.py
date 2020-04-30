@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     Street = db.Column(db.String(60))
     City = db.Column(db.String(60))
     parent = db.relationship('Parent', backref='User', uselist=False)
+    role = db.Column(db.String(50))
 
     def __repr__(self):
         return f"User('{self.FirstName}', '{self.LastName}', '{self.Email}')"
@@ -46,7 +47,7 @@ class Teacher(db.Model):
 
 class Parent(db.Model):
     id = db.Column(db.String(50), primary_key=True)
-    child_id = db.Column(db.Integer, db.ForeignKey('child.id'))
+    child_id = db.Column(db.String(50), db.ForeignKey('child.id'))
     Child_Weekly_Report = db.Column(db.Text)
     user_id = db.Column(db.String(50), db.ForeignKey('user.id'))
 

@@ -9,7 +9,6 @@ from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, ChildForm,
 from app.models import User, Employee, Teacher, Parent, Child
 from flask_login import login_user, current_user, logout_user, login_required
 from uuid import uuid4;
-import json
 
 def randomString(stringLength):
     """Generate a random string with the combination of lowercase and uppercase letters """
@@ -23,6 +22,10 @@ def randomString(stringLength):
 @app.route("/home")
 def home():
     return render_template('home.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -104,6 +107,9 @@ def info_for_parent():
         if(parent.user_id == None):
             parent.user_id = current_user.id
             db.session.commit()
+        else:
+            if(parent.user_id != current_user.id):
+                return render_template("ErrorChild.html")
     teacher = None
     return render_template("information_to_parent.html", child=child, teacher=teacher, weekly_report=weekly_report)
 

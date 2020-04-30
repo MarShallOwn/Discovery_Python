@@ -4,20 +4,20 @@
 <head>
 	<!-- Required meta tags -->
 
-<link href="https://fonts.googleapis.com/css?family=Courgette|Dancing+Script|Gloria+Hallelujah|Gochi+Hand|Indie+Flower|Pacifico&display=swap" rel="stylesheet">
- <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">     
- <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Dancing+Script|Gloria+Hallelujah|Gochi+Hand|Indie+Flower|Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">     
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Condensed&display=swap" rel="stylesheet">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link type='text/css' href="{{url_for('static', filename='design.css')}}" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script
-  src="https://code.jquery.com/jquery-3.5.0.min.js"
-  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-  crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  
         <style>
             @media screen and (max-width: 764px){
             .prof-img-a{
@@ -33,7 +33,7 @@
 </head>
 <body>
         <header class="site-header">
-                <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+                <nav style="background-color: black" class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
                     <div class="container">
                     <a class="navbar-brand mr-4" href="{{url_for('home')}}">Discovery Nursery</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,9 +42,11 @@
                     <div class="collapse navbar-collapse" id="navbarToggle">
                         <div class="navbar-nav mr-auto">
                         <a class="nav-item nav-link" href="{{url_for('home')}}">Home</a>
-                        {% if current_user.is_authenticated and current_user.role == 'Admin' %}
-                        <a class="nav-item nav-link" href="{{url_for('reservation_list')}}">Child</a>
-                        {% endif %}
+
+                        <a class="nav-item nav-link" href="{{url_for('child_list')}}">Child</a>
+
+                        <a class="nav-item nav-link" href="{{url_for('contact')}}">Contact us</a>
+ 
                         </div>
                         <!-- Navbar Right Side -->
                         <div class="navbar-nav">
@@ -78,17 +80,8 @@
                 <div style="margin-top: 10vh">
                     {% block content %}{% endblock %}
                 </div>
-<!--
-                        <main role="main" class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                    {% block home %}{% endblock %}
-                                    </div>
-                                -->
-    
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
 
 </html>

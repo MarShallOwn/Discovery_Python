@@ -1,0 +1,48 @@
+{%extends "layout.html" %}
+{% block content %}
+
+<head>
+    <link type='text/css' href="{{url_for('static', filename='contact.css')}}" rel="stylesheet">
+</head>
+
+<div style="margin-top: -6vh" class="backgroundImage">
+
+</div>
+<div class="form">
+<h1>Contact Us</h1>
+<p>We'd love to hear from you. Here's how you can reach us...</p>
+
+
+<form>
+<div class="name">
+  <label for="fname"></label>
+  <input type="text" id="fname" name="fname" placeholder="first-name">
+  <label for="lname"></label>
+  <input type="text" id="lname" name="lname" placeholder="last-name"> <br>
+  </div>
+    <select id="country" name="country">
+  <option value="au">parent</option>
+  <option value="ca">student</option>
+  <option value="usa">teacher</option>
+  </select>
+  <textarea>your message...</textarea>
+
+</form>
+<input type="submit" value="Submit">
+
+</div>
+
+
+  <div>
+  <h1>Visit Us</h1>
+  <p>If you want to visit us you can find us Here...</p>
+  <iframe class="map mb-5 mt-3" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6822.610282734511!2d29.965319!3d31.2399751!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5c527a5457d35%3A0x6a5684e5edb2a100!2sGlim%2C%20San%20Stifano%2C%20First%20Al%20Raml%2C%20Alexandria%20Governorate!5e0!3m2!1sen!2seg!4v1584833372799!5m2!1sen!2seg" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+  </div>
+
+      <footer  class="bg-dark py-5">
+        <div class="container">
+          <div class="small text-center text-muted"><span style="color: white;"> Copyright &copy; 2019 - Hoodini</span></div>
+        </div>
+      </footer>
+
+{% endblock content %}

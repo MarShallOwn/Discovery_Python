@@ -92,6 +92,13 @@ class TeacherForm(FlaskForm):
 
     submit = SubmitField('Submit')
 
+years = [(0, 'Please Select Year...'), ("First", "First"), ("Second", "Second"), ("Third", "Third"), ("Fourth", "Fourth"), ("Fifth", "Fifth")]
+
+marks = [(0, 'Please Select Mark...'), ("A+", "A+"), ("A", "A"), ("B+", "B+"), ("B", "B"), ("C+", "C+"), ("C", "C"), ("D+", "D+"), ("D", "D")]
+
+disability_types = [(0, 'Please Select Disability Type...'), ("Autism", "Autism"), ("Blindness", "Blindness"), ("Deafness", "Deafness"), ("Emotional Disturbance", "Emotional Disturbance"), ("Hearing Impairment", "Hearing Impairment"), ("Intellectual Disability", "Intellectual Disability"), ("Multiple Disabilities", "Multiple Disabilities"), ("Orthopedic Impairment", "Orthopedic Impairment"), ("Other Health Impaired", "Other Health Impaired"), ("Specific Learning Disability", "Specific Learning Disability"), ("Speech or Language Impairment", "Speech or Language Impairment"), ("Traumatic Brain Injury", "Traumatic Brain Injury"), ("Visual Impairment", "Visual Impairment") ]
+
+classrooms = [(0, 'Please Select Classroom...'), ("A", "A"), ("B", "B"), ("C", "C"), ("D","D"), ("E", "E")]
 
 class ChildForm(FlaskForm):
 
@@ -101,13 +108,13 @@ class ChildForm(FlaskForm):
     
     age = IntegerField('Age', validators=[DataRequired()])
 
-    grade = IntegerField('Grade', validators=[DataRequired()])
+    year = SelectField('Year', validators=[DataRequired()], choices=years)
 
-    degree = StringField('Degree', validators=[DataRequired()])
+    mark = SelectField('Exam Mark', validators=[DataRequired()], choices=marks)
 
-    disability_type = StringField('Disability Type', validators=[DataRequired()])
+    disability_type = SelectField('Disability Type', validators=[DataRequired()], choices=disability_types)
     
-    class_room = StringField("Class Room", validators=[DataRequired()])
+    class_room = SelectField("Class Room", validators=[DataRequired()], choices=classrooms)
 
     submit = SubmitField('Submit')
 

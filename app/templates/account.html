@@ -17,14 +17,14 @@
                     {{ form.firstname.label(class="form-control-label") }}
 
                     {% if form.firstname.errors %}
-                    {{ form.firstname(class="form-control form-control-lg is-invalid") }}
+                    {{ form.firstname(class="form-control is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.firstname.errors %}
                         <span>{{error}}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                    {{ form.firstname(class="form-control form-control-lg") }}
+                    {{ form.firstname(class="form-control") }}
                     {% endif %}
 
                 </div>
@@ -34,14 +34,14 @@
                     {{ form.lastname.label(class="form-control-label") }}
 
                     {% if form.lastname.errors %}
-                    {{ form.lastname(class="form-control form-control-lg is-invalid") }}
+                    {{ form.lastname(class="form-control is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.lastname.errors %}
                         <span>{{error}}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                    {{ form.lastname(class="form-control form-control-lg") }}
+                    {{ form.lastname(class="form-control") }}
                     {% endif %}
 
                 </div>
@@ -51,14 +51,14 @@
                         {{ form.email.label(class="form-control-label") }}
 
                         {% if form.email.errors %}
-                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        {{ form.email(class="form-control is-invalid") }}
                         <div class="invalid-feedback">
                             {% for error in form.email.errors %}
                             <span>{{error}}</span>
                             {% endfor %}
                         </div>
                         {% else %}
-                        {{ form.email(class="form-control form-control-lg") }}
+                        {{ form.email(class="form-control") }}
                         {% endif %}
                 </div>
 
@@ -66,14 +66,14 @@
                     {{ form.street.label(class="form-control-label") }}
 
                     {% if form.street.errors %}
-                    {{ form.street(class="form-control form-control-lg is-invalid") }}
+                    {{ form.street(class="form-control is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.street.errors %}
                         <span>{{error}}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                    {{ form.street(class="form-control form-control-lg") }}
+                    {{ form.street(class="form-control") }}
                     {% endif %}
             </div>
 
@@ -81,14 +81,14 @@
                     {{ form.city.label(class="form-control-label") }}
 
                     {% if form.city.errors %}
-                    {{ form.city(class="form-control form-control-lg is-invalid") }}
+                    {{ form.city(class="form-control is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.city.errors %}
                         <span>{{error}}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                    {{ form.city(class="form-control form-control-lg") }}
+                    {{ form.city(class="form-control") }}
                     {% endif %}
             </div>
             </fieldset>

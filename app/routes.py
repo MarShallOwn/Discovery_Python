@@ -3,7 +3,7 @@ import secrets
 from random import choice
 from string import ascii_letters, digits
 from datetime import date
-from flask import render_template, url_for, flash, redirect, request, abort
+from flask import render_template, url_for, flash, redirect, request, abort, jsonify
 from app import app, db, bcrypt
 from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, ChildForm, TeacherForm, ParentForm, EmployeeForm
 from app.models import User, Employee, Teacher, Parent, Child
@@ -119,7 +119,7 @@ def info_for_parent():
 def child_create():
     form = ChildForm()
     if form.validate_on_submit():
-        child = Child(id=str(uuid4()), FirstName=form.firstname.data, LastName=form.lastname.data, Password= randomString(8), Age= form.age.data, Grade = form.grade.data, Degree= form.degree.data.upper(), Disability_Type = form.disability_type.data, ClassRoom= form.class_room.data.upper())
+        child = Child(id=str(uuid4()), FirstName=form.firstname.data, LastName=form.lastname.data, Password= randomString(8), Age= form.age.data, Year = form.year.data, Mark= form.mark.data.upper(), Disability_Type = form.disability_type.data, ClassRoom= form.class_room.data.upper())
         print(child.id)
         parent = Parent(id=str(uuid4()), child_id=child.id)
         db.session.add(child)
@@ -183,6 +183,17 @@ def child_show(child_id):
         return redirect(url_for('home'))
 """
 
+@app.route('/child/change/password')
+@login_required
+def change_child_password():
+    child = Child.query.get(request.args.get('Id'))
+    child.Password = randomString(8)
+    parent = Parent.query.filter_by(child_id=child.id).first()
+    parent.user_id = None
+    db.session.commit()
+    return jsonify(child.Password)
+
+
 @app.route('/child/<child_id>/delete')
 @login_required
 def child_delete(child_id):
@@ -198,7 +209,7 @@ def child_delete(child_id):
 @app.route('/child/<child_id>/confirm_delete', methods=['POST'])
 def child_confirm_delete(child_id):
     child = Child.query.get_or_404(child_id)
-    parent = Parent.query.filter_by(child_id=child.id)
+    parent = Parent.query.filter_by(child_id=child.id).first()
   #  if current_user.role == 'Admin' or current_user == guest.user:
     db.session.delete(child)
     db.session.delete(parent)
@@ -225,8 +236,8 @@ def child_update(child_id):
         child.FirstName = form.firstname.data
         child.LastName = form.lastname.data
         child.Age = form.age.data
-        child.Grade = form.grade.data
-        child.Degree = form.degree.data.upper()
+        child.Year = form.year.data
+        child.Mark = form.mark.data.upper()
         child.Disability_Type = form.disability_type.data
         child.ClassRoom = form.class_room.data.upper()
         db.session.commit()
@@ -239,8 +250,8 @@ def child_update(child_id):
         form.firstname.data = child.FirstName
         form.lastname.data = child.LastName
         form.age.data = child.Age
-        form.grade.data = child.Grade
-        form.degree.data = child.Degree
+        form.year.data = child.Year
+        form.mark.data = child.Mark
         form.disability_type.data = child.Disability_Type
         form.class_room.data = child.ClassRoom
     return render_template('child_update.html', title="Reservation Update", form=form)

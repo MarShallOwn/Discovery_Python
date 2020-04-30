@@ -64,19 +64,19 @@
             </dd>
 
             <dt>
-                Grade
+                Year
             </dt>
 
             <dd>
-                {{child.Grade}}
+                {{child.Year}}
             </dd>
 
             <dt>
-                Degree
+                Mark
             </dt>
 
             <dd>
-                {{child.Degree}}
+                {{child.Mark}}
             </dd>
 
             <dt>
@@ -108,14 +108,14 @@
                 {{form.child_week_report.label(class="control-label col-md-2")}}
                 <div class="col-md-10">
                     {% if form.child_week_report.errors %}
-                    {{ form.child_week_report(class="form-control form-control-lg is-invalid") }}
+                    {{ form.child_week_report(class="form-control is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.child_week_report.errors %}
                             <span>{{error}}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.child_week_report(class="form-control form-control-lg") }}
+                    {{ form.child_week_report(class="form-control") }}
                 {% endif %}
                 </div>
             </div>

@@ -13,16 +13,16 @@
                     {{ form.firstname.label(class="form-control-label") }}
 
                     {% if form.firstname.errors %}
-                    <div class="col-md-10">
-                        {{ form.firstname(class="form-control form-control-lg is-invalid") }}
-                    </div>
+
+                        {{ form.firstname(class="form-control is-invalid") }}
+
                         <div class="invalid-feedback">
                             {% for error in form.firstname.errors %}
                                 <span>{{error}}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.firstname(class="form-control form-control-lg") }}
+                        {{ form.firstname(class="form-control") }}
                     {% endif %}
             </div>
 
@@ -30,16 +30,16 @@
                     {{ form.lastname.label(class="form-control-label") }}
                     
                     {% if form.lastname.errors %}
-                    <div class="col-md-10">
-                        {{ form.lastname(class="form-control form-control-lg is-invalid") }}
-                    </div>
+
+                        {{ form.lastname(class="form-control is-invalid") }}
+
                         <div class="invalid-feedback">
                             {% for error in form.lastname.errors %}
                                 <span>{{error}}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.lastname(class="form-control form-control-lg") }}
+                        {{ form.lastname(class="form-control") }}
                     {% endif %}
             </div>
 
@@ -47,55 +47,55 @@
                     {{ form.age.label(class="form-control-label") }}
                     
                     {% if form.age.errors %}
-                    <div class="col-md-10">
-                        {{ form.age(class="form-control form-control-lg is-invalid") }}
-                    </div>
+
+                        {{ form.age(class="form-control is-invalid") }}
+
                         <div class="invalid-feedback">
                             {% for error in form.age.errors %}
                                 <span>{{error}}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.age(class="form-control form-control-lg") }}
+                        {{ form.age(class="form-control") }}
                     {% endif %}
             </div>
 
             <div class="row">
                 <div class="form-group col-md-6">
-                    {{form.grade.label(class="form-label")}}
+                    {{form.year.label(class="form-label")}}
                     
-                    {% if form.grade.errors %}
+                    {% if form.year.errors %}
 
-                    <div class="col-md-10">
-                        {{ form.grade(class="form-control form-control-lg is-invalid") }}
-                    </div>
+
+                        {{ form.year(class="form-control is-invalid") }}
+
                 <div class="invalid-feedback">
-                        {% for error in form.grade.errors %}
+                        {% for error in form.year.errors %}
                         <span>{{error}}</span>
                         {% endfor %}
                     </div>
 
                 {% else %}
-                {{ form.grade(class="form-control") }}
+                {{ form.year(class="form-control") }}
                 {% endif %}
                 </div>
 
                 <div class="form-group col-md-6">
-                    {{form.degree.label(class="form-label")}}
+                    {{form.mark.label(class="form-label")}}
                     
-                    {% if form.degree.errors %}
+                    {% if form.mark.errors %}
 
-                    <div class="col-md-10">
-                        {{ form.degree(class="form-control form-control-lg is-invalid") }}
-                    </div>
+
+                        {{ form.mark(class="form-control is-invalid") }}
+ 
                 <div class="invalid-feedback">
-                        {% for error in form.degree.errors %}
+                        {% for error in form.mark.errors %}
                         <span>{{error}}</span>
                         {% endfor %}
                     </div>
 
                 {% else %}
-                {{ form.degree(class="form-control") }}
+                {{ form.mark(class="form-control") }}
                 {% endif %}
                 </div>
             </div>
@@ -107,9 +107,9 @@
                         
                         {% if form.disability_type.errors %}
     
-                        <div class="col-md-10">
-                            {{ form.disability_type(class="form-control form-control-lg is-invalid") }}
-                        </div>
+
+                            {{ form.disability_type(class="form-control is-invalid") }}
+
                     <div class="invalid-feedback">
                             {% for error in form.disability_type.errors %}
                             <span>{{error}}</span>
@@ -127,9 +127,9 @@
                         
                         {% if form.class_room.errors %}
     
-                        <div class="col-md-10">
-                            {{ form.class_room(class="form-control form-control-lg is-invalid") }}
-                        </div>
+
+                            {{ form.class_room(class="form-control is-invalid") }}
+
                     <div class="invalid-feedback">
                             {% for error in form.class_room.errors %}
                             <span>{{error}}</span>

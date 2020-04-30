@@ -39,8 +39,10 @@
               
               <div class='form-group row col-md-12'>
                   <label style="font-weight: 800; margin: 0 7px;">Password:</label>
-                  <p class="article-content">{{ child.Password }}</p>
+                  <p id="child_password" class="article-content">{{ child.Password }} </p> 
+                  <button type="button" class="btn btn-success my-auto mx-auto" onclick="ChangePassword(event)">Change Password</button>
               </div>
+              
 
               <div class='form-group row col-md-12'>
                   <label style="font-weight: 800; margin: 0 7px;">Age:</label>
@@ -48,13 +50,13 @@
               </div>
 
               <div class='form-group row col-md-12'>
-                  <label style="font-weight: 800; margin: 0 7px;">Grade:</label>
-                  <p class="article-content">{{ child.Grade }}</p>
+                  <label style="font-weight: 800; margin: 0 7px;">Year:</label>
+                  <p class="article-content">{{ child.Year }}</p>
               </div>
 
               <div class='form-group row col-md-12'>
-                  <label style="font-weight: 800; margin: 0 7px;">Degree:</label>
-                  <p class="article-content">{{ child.Degree }}</p>
+                  <label style="font-weight: 800; margin: 0 7px;">Mark:</label>
+                  <p class="article-content">{{ child.Mark }}</p>
               </div>
           </div>
           <div class="col-md-6 border-split">
@@ -82,4 +84,24 @@
     </article>
 </div>
 
+
+<script>
+
+function ChangePassword(e){
+
+    if(confirm("Are you sure you want to change child's password ?"))
+    {
+        $.ajax({
+                type: "GET",
+                url: '{{url_for("change_child_password")}}',
+                data: { Id: '{{child.id}}' },
+                dataType: "json",
+            }).done( data => {
+                $("#child_password").html(data);
+            });
+    }
+   
+}
+
+</script>
 {% endblock content %}

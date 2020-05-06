@@ -6,7 +6,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config['SECRET_KEY'] = '863155d874daa2d22c27848f63d645e7544asd6flsdafuiasdihfahidfhifush'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Discovery.db'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)

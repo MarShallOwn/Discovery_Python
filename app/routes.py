@@ -276,7 +276,7 @@ def employer_list():
 def employer_create():
     form = EmployeeForm()
     if form.validate_on_submit():
-        employer = Employee(id=str(uuid4()), FirstName=form.firstname.data, LastName=form.lastname.data, Age= form.age.data, Address = form.address.data, Salary= form.salary.data, Job = form.job.data.upper())
+        employer = Employee(id=str(uuid4()), FirstName=form.firstname.data, LastName=form.lastname.data, Age= form.age.data, Address = form.address.data, Salary= form.salary.data, Job = form.job.data)
         print(employer.id)
         db.session.add(employer)
         db.session.commit()

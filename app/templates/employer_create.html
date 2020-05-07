@@ -1,0 +1,137 @@
+{%extends "layout.html" %}
+{% block content %}
+<div class='row mt-5'>
+<div class="col-md-3">
+</div>
+<div class="content-section col-md-6">
+    <form  method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Create Employer</legend>
+
+            <div class="form-group">
+                    {{ form.firstname.label(class="form-control-label") }}
+
+                    {% if form.firstname.errors %}
+
+                        {{ form.firstname(class="form-control is-invalid") }}
+
+                        <div class="invalid-feedback">
+                            {% for error in form.firstname.errors %}
+                                <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.firstname(class="form-control") }}
+                    {% endif %}
+            </div>
+
+            <div class="form-group">
+                    {{ form.lastname.label(class="form-control-label") }}
+                    
+                    {% if form.lastname.errors %}
+
+                        {{ form.lastname(class="form-control is-invalid") }}
+
+                        <div class="invalid-feedback">
+                            {% for error in form.lastname.errors %}
+                                <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.lastname(class="form-control") }}
+                    {% endif %}
+            </div>
+
+            <div class="form-group">
+                    {{ form.age.label(class="form-control-label") }}
+                    
+                    {% if form.age.errors %}
+
+                        {{ form.age(class="form-control is-invalid") }}
+
+                        <div class="invalid-feedback">
+                            {% for error in form.age.errors %}
+                                <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.age(class="form-control") }}
+                    {% endif %}
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    {{form.address.label(class="form-label")}}
+                    
+                    {% if form.address.errors %}
+
+                        {{ form.address(class="form-control is-invalid") }}
+
+                <div class="invalid-feedback">
+                        {% for error in form.address.errors %}
+                        <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+
+                {% else %}
+                {{ form.address(class="form-control") }}
+                {% endif %}
+                </div>
+
+                <div class="form-group col-md-6">
+                    {{form.salary.label(class="form-label")}}
+                    
+                    {% if form.salary.errors %}
+
+                        {{ form.salary(class="form-control is-invalid") }}
+
+                <div class="invalid-feedback">
+                        {% for error in form.salary.errors %}
+                        <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+
+                {% else %}
+                {{ form.salary(class="form-control") }}
+                {% endif %}
+                </div>
+            </div>
+
+                <div class="row">
+                    
+                    <div class="form-group col-md-6">
+                        {{form.job.label(class="form-label")}}
+                        
+                        {% if form.job.errors %}
+    
+                        {{ form.job(class="form-control is-invalid") }}
+
+                    <div class="invalid-feedback">
+                            {% for error in form.job.errors %}
+                            <span>{{error}}</span>
+                            {% endfor %}
+                        </div>
+    
+                    {% else %}
+                    {{ form.job(class="form-control") }}
+                    {% endif %}
+                    </div>
+
+                </div>
+        </fieldset>
+
+        <div class="row">
+            <div class="form-group">
+                <a class="btn btn-outline-danger" href="{{ url_for('employer_list') }}">Back to List</a> 
+        </div>
+
+            <div style="text-align: right;" class='col-md-10'>
+                {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+        </div>
+
+    </form>
+</div>
+</div>
+{% endblock content %}

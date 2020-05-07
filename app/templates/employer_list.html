@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div id="Holder" class="container">
+    <h2>Create</h2>
+    <p><a style="font-weight: 900; color: hotpink; text-decoration: none;" href="{{url_for('employer_create')}}">Add employer</a></p> 
+    <div class="row mb-2">
+        <div class="col-md-4">
+            <div id="radioParent" class="col-md-6 btn-group btn-group-toggle" data-toggle="buttons">
+                <label name="radios" class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> FirstName
+                </label>
+                <label name="radios" class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> LastName
+                </label>
+                <label name="radios" class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> Job
+                </label>
+            </div>
+        </div>
+            <div class="col-md-6 mt-2 ml-2">
+                <input class="float-right mr-5 mb-2" id="search" type="text">
+            </div>
+    </div> 
+     
+    <table class="table table-striped">
+      <thead>
+        <tr>
+            <th>
+                FirstName
+            </th>
+            <th>
+                LastName
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+              Salary
+          </th>
+          <th>
+              Job
+          </th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        {% for emp in employer %}
+        <tr>
+            <td>
+                <p>{{emp.FirstName}}</p>
+            </td>
+            <td>
+                <p>{{emp.LastName}}</p>
+            </td>
+            <td>
+                <p>{{emp.Age}}</p>
+            </td> 
+            <td>
+                  <p>{{emp.Address}}</p>
+              </td>
+              <td>
+                  <p>{{emp.Salary}}</p>
+              </td> 
+              <td>
+                  <p>{{emp.Job}}</p>
+              </td> 
+            <td>
+                <a href="{{ url_for('employer_delete', employer_id=emp.id) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock content %}

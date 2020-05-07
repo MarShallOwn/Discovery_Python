@@ -70,6 +70,8 @@
               </td> 
             <td>
                 <a href="{{ url_for('employer_delete', employer_id=emp.id) }}">Delete</a>
+                <a href="{{ url_for('employer_show', employer_id=emp.id) }}">Details</a>
+                <a href="{{ url_for('employer_update', employer_id=emp.id) }}">Edit</a>
             </td>
         </tr>
         {% endfor %}

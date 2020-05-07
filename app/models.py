@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     role = db.Column(db.String(50))
 
     def __repr__(self):
-        return f"User('{self.FirstName}', '{self.LastName}', '{self.Email}')"
+        return f"User('{self.FirstName}', '{self.LastName}', '{self.Email}','{self.Password}')"
 
 
 class Child(db.Model):

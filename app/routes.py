@@ -315,7 +315,7 @@ def employer_confirm_delete(employer_id):
 @app.route('/employer/<employer_id>/update', methods=['GET', 'POST'])
 @login_required
 def employer_update(employer_id):
-    guest = employer.query.get_or_404(employer_id)
+    guest = Employee.query.get_or_404(employer_id)
    # if current_user.role == 'Admin' or current_user == guest.user:
     form = EmployeeForm()
     employer = Employee.query.get_or_404(employer_id)
@@ -323,10 +323,9 @@ def employer_update(employer_id):
         employer.FirstName = form.firstname.data
         employer.LastName = form.lastname.data
         employer.Age = form.age.data
-        employer.Year = form.year.data
-        employer.Mark = form.mark.data.upper()
-        employer.Disability_Type = form.disability_type.data
-        employer.ClassRoom = form.class_room.data.upper()
+        employer.Address = form.address.data
+        employer.Salary = form.salary.data
+        employer.Job = form.job.data
         db.session.commit()
         flash('employer has been Updated!','success')
           #  if current_user.role == 'Admin':
@@ -334,16 +333,27 @@ def employer_update(employer_id):
           #  else:
         return redirect(url_for('employer_list'))
     elif request.method == 'GET':
-        form.firstname.data = employer.FirstName
-        form.lastname.data = employer.LastName
-        form.age.data = employer.Age
-        form.year.data = employer.Year
-        form.mark.data = employer.Mark
-        form.disability_type.data = employer.Disability_Type
-        form.class_room.data = employer.ClassRoom
+        employer.FirstName = form.firstname.data
+        employer.LastName = form.lastname.data
+        employer.Age = form.age.data
+        employer.Address = form.address.data
+        employer.Salary = form.salary.data
+        employer.Job = form.job.data
     return render_template('employer_update.html', title="Reservation Update", form=form)
     """
     else:
         flash('You need to be admin to view this page.','danger')
         return redirect(url_for('home'))
     """
+
+@app.route('/employer/<employer_id>/show')
+@login_required
+def employer_show(employer_id):
+    employer = Employee.query.get_or_404(employer_id)
+  #  if current_user.role == 'Admin' or current_user == guest.user:
+    return render_template('employer_details.html', title='Details', employer=employer)
+    """
+    else:
+        flash('You need to be admin to view this page.','danger')
+        return redirect(url_for('home'))
+"""

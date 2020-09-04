@@ -142,19 +142,18 @@
                 </div>
             {% endif %}
     </div>
-
-
             </fieldset>
+
             <div class="form-group">
                     {{ form.submit(class="btn btn-outline-info") }}
             </div>
         </form>
-    </div>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            Already Have an Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
-        </small>
 
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have an Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
+            </small>
+        </div>
     </div>
     </div>
 {% endblock content %}
